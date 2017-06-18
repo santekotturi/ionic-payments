@@ -103,10 +103,9 @@ export class SettingsPage {
   logout() {
     this.user.logout()
     this.events.publish('user:logout')
-    // const index = this.navCtrl.getActive().index;
-    // console.log('index -. ', index);
-    // this.navCtrl.remove(0, index);
-    // this.navCtrl.setRoot(WelcomePage)
-    // this.navCtrl.push(TutorialPage);
+  }
+
+  test() {
+    this.user.test()
   }
 }
