@@ -5,8 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 /**
- * Most apps have the concept of a User. This is a simple provider
- * with stubs for login/signup/etc.
+ * Most apps have the concept of a User. This is a simple provider with login/signup/etc.
  *
  * This User provider makes calls to our API at the `login` and `signup` endpoints.
  *
@@ -23,6 +22,7 @@ import 'rxjs/add/operator/toPromise';
  *
  * If the `status` field is not `success`, then an error is detected and returned.
  */
+
 @Injectable()
 export class User {
   _user: any;
@@ -34,8 +34,8 @@ export class User {
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
-  login(accountInfo: any) {
-    let seq = this.api.post('login', accountInfo).share();
+  login(credentials: any) {
+    let seq = this.api.post('user/login', credentials).share();
 
     seq
       .map(res => res.json())
@@ -57,7 +57,7 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('signup', accountInfo).share();
+    let seq = this.api.post('user/signup', accountInfo).share();
 
     seq
       .map(res => res.json())
