@@ -79,8 +79,8 @@
     </platform>
     <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="Take photos of your perfect cup of coffee" />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Upload photos of your perfect brew" />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Take photos of your cool new swag" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Upload photos of your swag" />
     </plugin>
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
