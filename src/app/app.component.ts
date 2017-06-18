@@ -17,6 +17,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { ProductsPage} from '../pages/products/products';
 
 import { Settings } from '../providers/providers';
 
@@ -58,7 +59,8 @@ export class MyApp {
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'Search', component: SearchPage },
+    { title: 'Products', component: ProductsPage}
   ]
 
   constructor(

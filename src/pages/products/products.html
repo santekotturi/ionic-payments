@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Products</ion-title>
+
+    <ion-buttons end>
+      <button class="notification-button" ion-button icon-only color="dark" (click)="showCart()">
+        <ion-icon name="cart">
+          <ion-badge *ngIf="cartCount > 0" class="notifications-badge" color="positive">{{cartCount}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let product of currentProducts">
+    <!--<ion-card-content>-->
+    <img src="assets/img/product-placeholder.png" />
+    <div class="card-title"> {{product.name}}</div>
+    <div class="card-subtitle">{{product.details}}</div>
+    <div class="card-price">{{product.price}}</div>
+    <!--</ion-card-content>-->
+    <ion-row no-padding>
+      <ion-col>
+        <button style="float:left" ion-button clear small color="dark" icon-start>
+          <ion-icon name='star-outline'></ion-icon>
+          Fav
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button small clear color="positive" icon-start (click)="addToCart(product)">
+          <!--<ion-icon name='basket'></ion-icon>-->
+          <strong>Add</strong>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
