@@ -125,6 +125,6 @@ export class MyApp {
   }
 
   logout() {
-    this.rootPage = WelcomePage
+    this.openPage({ title: 'Welcome', component: WelcomePage })
   }
 }
