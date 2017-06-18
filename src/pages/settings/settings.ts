@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 
+import { WelcomePage } from '../welcome/welcome';
+import { TutorialPage } from '../tutorial/tutorial';
 import { Settings } from '../../providers/settings';
 
 import { TranslateService } from '@ngx-translate/core';
+
+import { User } from '../../providers/user'
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -34,11 +38,14 @@ export class SettingsPage {
 
   subSettings: any = SettingsPage;
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public user: User,
+    public events: Events) {
   }
 
   _buildForm() {
@@ -91,5 +98,15 @@ export class SettingsPage {
 
   ngOnChanges() {
     console.log('Ng All Changes');
+  }
+
+  logout() {
+    this.user.logout()
+    this.events.publish('user:logout')
+    // const index = this.navCtrl.getActive().index;
+    // console.log('index -. ', index);
+    // this.navCtrl.remove(0, index);
+    // this.navCtrl.setRoot(WelcomePage)
+    // this.navCtrl.push(TutorialPage);
   }
 }

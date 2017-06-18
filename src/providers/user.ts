@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
 import { Api } from './api';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -27,7 +28,10 @@ import 'rxjs/add/operator/toPromise';
 export class User {
   _user: any;
 
-  constructor(public http: Http, public api: Api) {
+  constructor(
+    public http: Http, 
+    public api: Api,
+    private storage: Storage) {
   }
 
   /**
@@ -78,12 +82,17 @@ export class User {
    */
   logout() {
     this._user = null;
+    this.storage.clear();
+    // TODO reset the app
   }
 
   /**
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
+    console.log('setting user -> ', resp.user)
     this._user = resp.user;
+    this.storage.set('user', this._user);
+    this.storage.set('token', this._user.token)
   }
 }

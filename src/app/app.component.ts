@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Config } from 'ionic-angular';
+import { Platform, Nav, Config, Events } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { MainPage } from '../pages/pages';
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
-import { FirstRunPage } from '../pages/pages';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
@@ -42,7 +42,7 @@ import { TranslateService } from '@ngx-translate/core'
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -61,9 +61,38 @@ export class MyApp {
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
-    this.initTranslate();
+  constructor(
+    private translate: TranslateService,
+    private platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private storage: Storage,
+    public events: Events) {
+    this.initTranslate()
+
+    events.subscribe('user:logout', () => {
+      console.log('heard logout event')
+      this.logout();
+    });
   }
+
+  ngOnInit() {
+    this.storage.get('user')
+      .then((user) => {
+        console.log('existing user in storage -> ', user)
+        if (user) {
+          this.rootPage = MainPage
+        } else {
+          this.rootPage = TutorialPage
+        }
+      }, (err) => {
+        console.error('Error getting user from storage')
+        this.rootPage = TutorialPage
+      })
+  }
+
 
   ionViewDidLoad() {
     this.platform.ready().then(() => {
@@ -93,5 +122,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    this.rootPage = WelcomePage
   }
 }
