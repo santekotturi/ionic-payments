@@ -83,7 +83,6 @@ export class User {
   logout() {
     this._user = null;
     this.storage.clear();
-    // TODO reset the app
   }
 
   /**
