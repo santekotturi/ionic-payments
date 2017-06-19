@@ -17,7 +17,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { ProductsPage} from '../pages/products/products';
+import { ProductsPage } from '../pages/products/products';
+import { CartPage } from '../pages/cart/cart'
 
 import { Settings } from '../providers/providers';
 
@@ -60,7 +61,8 @@ export class MyApp {
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
     { title: 'Search', component: SearchPage },
-    { title: 'Products', component: ProductsPage}
+    { title: 'Products', component: ProductsPage },
+    { title: 'Cart', component: CartPage }
   ]
 
   constructor(

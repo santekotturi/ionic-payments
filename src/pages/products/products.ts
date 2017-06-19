@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
+import { CartPage } from '../cart/cart'
 // import { ItemCreatePage } from '../item-create/item-create';
 // import { ItemDetailPage } from '../item-detail/item-detail';
 
@@ -32,7 +33,8 @@ export class ProductsPage {
   }
 
   showCart() {
-    alert('not yet implemented')
+    let cartModal = this.modalCtrl.create(CartPage);
+    cartModal.present()
   }
 
   addToCart(product: IProduct) {

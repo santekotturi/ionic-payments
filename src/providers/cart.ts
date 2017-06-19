@@ -54,9 +54,18 @@ export class Cart {
                 }
             })
         })
+    }
 
+    getCartItems() {
+        return new Promise((resolve, reject) => {
+            this.storage.get('cart').then((products) => {
+                resolve(products)
+            })
+        })
+    }
 
-
+    empty() {
+        this.storage.remove('cart')
     }
 
 }

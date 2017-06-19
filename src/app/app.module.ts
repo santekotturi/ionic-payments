@@ -20,14 +20,15 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { ProductsPage} from '../pages/products/products';
+import { ProductsPage } from '../pages/products/products';
+import { CartPage } from '../pages/cart/cart';
 
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
-import { Products} from '../providers/products';
-import { Cart} from '../providers/cart';
+import { Products } from '../providers/products';
+import { Cart } from '../providers/cart';
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -75,7 +76,8 @@ export function provideSettings(storage: Storage) {
     TabsPage,
     TutorialPage,
     WelcomePage,
-    ProductsPage
+    ProductsPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -107,7 +109,8 @@ export function provideSettings(storage: Storage) {
     TabsPage,
     TutorialPage,
     WelcomePage,
-    ProductsPage
+    ProductsPage,
+    CartPage
   ],
   providers: [
     Api,

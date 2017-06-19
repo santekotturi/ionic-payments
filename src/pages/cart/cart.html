@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cart</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-avatar item-start>
+        <img src="assets/img/product-placeholder.png" />
+      </ion-avatar>
+      <h2>{{item.name}}</h2>
+      <ion-note item-end>Quantity: {{item.qty}}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    Subtotal: {{subtotal}}<br><br> ------------------------------
+    <br> Total: {{total}}
+
+    <button ion-button color="primary" block (click)="checkout()"> Checkout with Stripe </button>
+    <button ion-button color="danger" block clear (click)="emptyCart()"> Empty Cart </button>
+  </div>
+
+</ion-content>
