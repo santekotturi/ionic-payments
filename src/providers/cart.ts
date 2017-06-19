@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import _ from 'lodash';
 import { Api } from './api';
 import { Storage } from '@ionic/storage';
+import { Events } from 'ionic-angular';
 
 import { IProduct } from '../models/Product'
 
@@ -15,8 +16,10 @@ export class Cart {
     constructor(
         public http: Http,
         public api: Api,
-        private storage: Storage) {
+        private storage: Storage,
+        public events: Events) {
 
+        events.subscribe('cart:added', (product) => this.addProductToCart(product))
     }
 
     addProductToCart(product) {
@@ -35,8 +38,8 @@ export class Cart {
         }
 
         console.log('products in cart -> ', this.products);
-
         this.storage.set('cart', this.products)
+        this.events.publish('cart:changed', this.products)
     }
 
     getCartProductCount() {
@@ -65,7 +68,10 @@ export class Cart {
     }
 
     empty() {
+        this.products = [];
         this.storage.remove('cart')
+        this.events.publish('cart:changed', this.products)
+        
     }
 
 }

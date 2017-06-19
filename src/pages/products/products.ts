@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, Events } from 'ionic-angular';
 
 import { CartPage } from '../cart/cart'
 // import { ItemCreatePage } from '../item-create/item-create';
@@ -21,15 +21,21 @@ export class ProductsPage {
     public navCtrl: NavController,
     public products: Products,
     public modalCtrl: ModalController,
-    public cart: Cart) {
+    public cart: Cart,
+    public events: Events) {
     this.currentProducts = this.products.get();
+    events.subscribe('cart:changed', (products) => this.updateCartItemCount(products))
   }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    this.updateCartItemCount()
+    this.cart.getCartProductCount()
+      .then((count: number) => {
+        this.cartCount = count;
+        console.log('Cart item count = ', this.cartCount)
+      })
   }
 
   showCart() {
@@ -38,15 +44,14 @@ export class ProductsPage {
   }
 
   addToCart(product: IProduct) {
-    this.cart.addProductToCart(product)
-    this.updateCartItemCount()
+    this.events.publish('cart:added', product);
   }
 
-  updateCartItemCount() {
-    this.cart.getCartProductCount()
-      .then((count: number) => {
-        this.cartCount = count;
-        console.log('Cart item count = ', this.cartCount)
-      })
+  updateCartItemCount(products: any[]) {
+    this.cartCount = 0;
+
+    products.forEach(product => {
+      this.cartCount += product.qty
+    });
   }
 }
