@@ -45,7 +45,6 @@ export class CartPage {
     // web
     else {
       (<any>window).Stripe.setPublishableKey(this.stripe_publish_key);
-      console.log((<any>window).Stripe)
     }
 
     this.loading = loadingCtrl.create({
@@ -120,7 +119,8 @@ export class CartPage {
   }
 
   emptyCart() {
-    this.items = [];
+    this.hasItems = false
+    this.items = []
     this.cart.empty()
     this.calculateTotals()
   }

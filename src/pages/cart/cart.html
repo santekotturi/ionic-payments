@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>Cart</ion-title>
     <ion-buttons start>
-      <button ion-button (click)="close()">
+      <button ion-button color="dark" (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -11,12 +11,12 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content style="background-color: rgb(250, 250, 250)">
 
-<div *ngIf="!hasItems" padding text-center style="margin-top: 25vh">
-  <h2> Your cart is empty </h2>
-  <button style="margin-top: 40px" ion-button color="primary" block (click)="close()"> Go Shopping </button>
-</div>
+  <div *ngIf="!hasItems" padding text-center style="margin-top: 25vh">
+    <h2> Your cart is empty </h2>
+    <button style="margin-top: 40px" ion-button color="primary" block (click)="close()"> Go Shopping </button>
+  </div>
 
   <div *ngIf="hasItems">
     <ion-list>
@@ -60,9 +60,20 @@
     </ion-list>
 
     <div padding>
-      Subtotal: {{subtotal}}<br><br> ------------------------------
-      <br> Total: {{total}} <br><br>
-      <button ion-button color="primary" block (click)="checkout()"> Checkout with Stripe </button>
+      <ion-item>
+        Subtotal
+        <span item-end>{{subtotal | currency:'USD':true:'2.0-0'}}</span>
+      </ion-item>
+      <ion-item>
+        Shipping
+        <span item-end>Free</span>
+      </ion-item>
+      <ion-item no-lines>
+        <strong>Total</strong>
+        <span item-end>{{total | currency:'USD':true:'2.0-0'}}</span>
+      </ion-item>
+      <div style="height: 30px"> </div>
+      <button ion-button color="primary" block (click)="checkout()"> Pay with Stripe </button>
       <button ion-button color="danger" block clear (click)="emptyCart()"> Empty Cart </button>
     </div>
   </div>

@@ -23,15 +23,15 @@ export class Cart {
     }
 
     addProductToCart(product) {
+        console.log(product)
+
+        let existingProduct = _.find(this.products, (item) => {
+            return product.id === item.id
+        })
         // if the product is already in the cart, increase the qty
-        let existingIds = _.map(this.products, 'id')
-        if (product.id in existingIds) {
-            let existingProduct = _.find(this.products, (item) => {
-                return item.id === product.id
-            })
-            existingProduct.qty++;
+        if (existingProduct) {
+            existingProduct.qty++
         }
-        // add the item because its not already in the cart
         else {
             product.qty = 1;
             this.products.push(product)
@@ -71,7 +71,7 @@ export class Cart {
         this.products = [];
         this.storage.remove('cart')
         this.events.publish('cart:changed', this.products)
-        
+
     }
 
 }
