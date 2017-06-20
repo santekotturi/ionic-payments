@@ -25,8 +25,9 @@
     <!--</ion-card-content>-->
     <ion-row no-padding>
       <ion-col>
-        <button style="float:left" ion-button clear small color="dark" icon-start>
-          <ion-icon name='star-outline'></ion-icon>
+        <button style="float:left" ion-button clear small color="dark" icon-start (click)="fav(product)">
+          <ion-icon *ngIf="!product.fav" name='star-outline'></ion-icon>
+          <ion-icon *ngIf="product.fav" name='star'></ion-icon>
           Fav
         </button>
       </ion-col>

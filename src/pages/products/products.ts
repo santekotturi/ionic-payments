@@ -24,6 +24,7 @@ export class ProductsPage {
     public cart: Cart,
     public events: Events) {
     this.currentProducts = this.products.get();
+    this.currentProducts.forEach(product => product.fav = false)
     events.subscribe('cart:changed', (products) => this.updateCartItemCount(products))
   }
 
@@ -54,4 +55,9 @@ export class ProductsPage {
       this.cartCount += product.qty
     });
   }
+
+  fav(product) {
+    product.fav = !product.fav
+  }
+
 }

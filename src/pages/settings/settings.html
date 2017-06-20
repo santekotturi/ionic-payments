@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <form [formGroup]="form" *ngIf="settingsReady">
+  <!--<form [formGroup]="form" *ngIf="settingsReady">
     <ion-list *ngIf="page == 'main'">
       <ion-item>
         <ion-label>{{ 'SETTINGS_OPTION1' | translate }}</ion-label>
@@ -40,14 +40,10 @@
         <ion-input formControlName="option4"></ion-input>
       </ion-item>
     </ion-list>
-  </form>
+  </form>-->
 
      <div padding>
         <button (click)="logout()" ion-button color="dark" block>Log out</button>
-      </div>
-
-      <div padding>
-        <button (click)="test()" ion-button color="primary" block>Test</button>
       </div>
 
 </ion-content>

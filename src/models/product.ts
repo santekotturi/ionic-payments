@@ -5,5 +5,6 @@ export interface IProduct {
   price: number,
   qty? : number,
   img? : string,
+  fav?: boolean 
 
 }

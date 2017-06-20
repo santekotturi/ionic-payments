@@ -105,7 +105,4 @@ export class SettingsPage {
     this.events.publish('user:logout')
   }
 
-  test() {
-    this.user.test()
-  }
 }

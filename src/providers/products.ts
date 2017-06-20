@@ -11,51 +11,51 @@ export class Products {
 
   products : IProduct[] = [
       {
-        id: 0,
+        id: 1,
         name: 'Product 1',
         details: 'Something about product 1',
         price: 9,
       },
       {
-        id: 1,
+        id: 2,
         name: 'Product 2',
         details: 'Something about product 2',
         price: 12
       },
       {
-        id: 2,
-        name: 'Product 2',
-        details: 'Something about product 2',
-        price: 6
-      },
-      {
         id: 3,
         name: 'Product 3',
         details: 'Something about product 3',
-        price: 45
+        price: 6
       },
       {
         id: 4,
         name: 'Product 4',
         details: 'Something about product 4',
-        price: 16
+        price: 45
       },
       {
         id: 5,
         name: 'Product 5',
         details: 'Something about product 5',
-        price: 27
+        price: 16
       },
       {
         id: 6,
         name: 'Product 6',
         details: 'Something about product 6',
-        price: 67
+        price: 27
       },
       {
         id: 7,
         name: 'Product 7',
         details: 'Something about product 7',
+        price: 67
+      },
+      {
+        id: 8,
+        name: 'Product 8',
+        details: 'Something about product 8',
         price: 8
       }
     ]
