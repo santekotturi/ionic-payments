@@ -1,7 +1,7 @@
 {
-    "name": "skrc",
-    "version": "0.0.1",
-    "author": "Ionic Framework",
+    "name": "ionic-payments",
+    "version": "0.0.2",
+    "author": "Sante Kotturi",
     "homepage": "http://ionicframework.com/",
     "private": true,
     "scripts": {
