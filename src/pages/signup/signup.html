@@ -8,25 +8,26 @@
 
 
 <ion-content>
-  <form (submit)="doSignup()">
-    <ion-list>
+  <div class="desktop-mobile-friendly">
+    <form (submit)="doSignup()">
+      <ion-list>
 
-      <ion-item>
-        <ion-label fixed>First Name</ion-label>
-        <ion-input type="text" [(ngModel)]="account.firstname" name="firstname"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>First Name</ion-label>
+          <ion-input type="text" [(ngModel)]="account.firstname" name="firstname"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label fixed>Last Name</ion-label>
-        <ion-input type="text" [(ngModel)]="account.lastname" name="lastname"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="account.lastname" name="lastname"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+          <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        </ion-item>
 
-      <!--
+        <!--
       Want to add a Username? Here you go:
 
       <ion-item>
@@ -35,15 +36,16 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+          <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        </ion-item>
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
-      </div>
+        <div padding>
+          <button style="max-width: 300px; margin: 0 auto" ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+        </div>
 
-    </ion-list>
-  </form>
+      </ion-list>
+    </form>
+  </div>
 </ion-content>

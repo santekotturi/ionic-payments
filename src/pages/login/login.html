@@ -8,15 +8,16 @@
 
 
 <ion-content>
-  <form (submit)="doLogin()">
-    <ion-list>
+  <div class="desktop-mobile-friendly">
+    <form (submit)="doLogin()">
+      <ion-list>
 
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+          <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        </ion-item>
 
-      <!--
+        <!--
       Want to use a Username instead of an Email? Here you go:
 
       <ion-item>
@@ -25,15 +26,16 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+          <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        </ion-item>
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
-      </div>
+        <div padding>
+          <button style="max-width: 300px; margin: 0 auto" ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        </div>
 
-    </ion-list>
-  </form>
+      </ion-list>
+    </form>
+  </div>
 </ion-content>

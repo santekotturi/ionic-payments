@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 
-import { Tab1Root, Tab2Root, Tab3Root } from '../pages';
+import { Tab1Root, Tab3Root } from '../pages';
 
 @Component({
   selector: 'page-tabs',
@@ -10,7 +10,6 @@ import { Tab1Root, Tab2Root, Tab3Root } from '../pages';
 })
 export class TabsPage {
   tab1Root: any = Tab1Root;
-  tab2Root: any = Tab2Root;
   tab3Root: any = Tab3Root;
 
   tab1Title = " ";

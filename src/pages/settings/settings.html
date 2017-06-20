@@ -8,58 +8,57 @@
 
 <ion-content>
 
-<ion-list>
-    <ion-list-header>
-      <ion-icon name="cog"
-                item-left></ion-icon>
-      General
-    </ion-list-header>
+  <div class="desktop-mobile-friendly">
 
-    <ion-item>
-      <ion-label stacked>First Name</ion-label>
-      <ion-input [value]="_user.firstname"
-                 type="text"></ion-input>
-    </ion-item>
-        <ion-item>
-      <ion-label stacked>Last Name</ion-label>
-      <ion-input [value]="_user.lastname"
-                 type="text"></ion-input>
-    </ion-item>
+    <ion-list>
+      <ion-list-header no-lines>
+        <ion-icon name="cog" item-left></ion-icon>
+        General
+      </ion-list-header>
 
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input [value]="_user.email"
-                 type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input [value]="_user.firstname" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input [value]="_user.lastname" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input [value]="_user.email" type="text"></ion-input>
+      </ion-item>
 
 
-    <!-- hacked divider -->
-    <ion-item no-lines></ion-item>
+      <!-- hacked divider -->
+      <ion-item no-lines></ion-item>
 
-    <ion-list-header>
-      <ion-icon name="paper-plane"
-                item-left></ion-icon>
-      Orders
-    </ion-list-header>
-    <ion-item>
-      340201382
-      <ion-note item-right>
-        Status: Processing
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        09289323
-      </ion-label>
-      <ion-note item-right>
-        Status: Shipped
-      </ion-note>
-    </ion-item>
-</ion-list>
+      <ion-list-header no-lines>
+        <ion-icon name="paper-plane" item-left></ion-icon>
+        Orders
+      </ion-list-header>
+      <ion-item>
+        340201382
+        <ion-note item-right>
+          Status: Processing
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          09289323
+        </ion-label>
+        <ion-note item-right>
+          Status: Shipped
+        </ion-note>
+      </ion-item>
+    </ion-list>
 
 
-     <div padding>
-        <button (click)="logout()" ion-button color="dark" block>Log out</button>
-      </div>
+    <div padding style="margin-top: 40px">
+      <button style="max-width: 300px; margin: 0 auto" (click)="logout()" ion-button color="dark" block>Log out</button>
+    </div>
+
+  </div>
 
 </ion-content>

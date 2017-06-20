@@ -16,28 +16,39 @@
 
 <ion-content class="card-background-page">
 
-  <ion-card *ngFor="let product of currentProducts">
-    <!--<ion-card-content>-->
-    <img src="assets/img/product-placeholder.png" />
-    <div class="card-title"> {{product.name}}</div>
-    <div class="card-subtitle">{{product.details}}</div>
-    <div class="card-price">${{product.price}}</div>
-    <!--</ion-card-content>-->
-    <ion-row no-padding>
-      <ion-col>
-        <button style="float:left" ion-button clear small color="dark" icon-start (click)="fav(product)">
+  <ion-grid style="padding: 5vh 10vw">
+
+    <ion-row>
+
+      <ion-col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 *ngFor="let product of currentProducts">
+
+        <ion-card style="min-width: 250px" >
+          <!--<ion-card-content>-->
+          <img src="assets/img/product-placeholder.png" />
+          <div class="card-title"> {{product.name}}</div>
+          <div class="card-subtitle">{{product.details}}</div>
+          <div class="card-price">${{product.price}}</div>
+          <!--</ion-card-content>-->
+          <ion-row no-padding>
+            <ion-col>
+              <button style="float:left" ion-button clear small color="dark" icon-start (click)="fav(product)">
           <ion-icon *ngIf="!product.fav" name='star-outline'></ion-icon>
           <ion-icon *ngIf="product.fav" name='star'></ion-icon>
           Fav
         </button>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button small clear color="positive" icon-start (click)="addToCart(product)">
+            </ion-col>
+            <ion-col text-right>
+              <button ion-button small clear color="positive" icon-start (click)="addToCart(product)">
           <!--<ion-icon name='basket'></ion-icon>-->
           <strong>Add</strong>
         </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
       </ion-col>
     </ion-row>
-  </ion-card>
+
+  </ion-grid>
 
 </ion-content>

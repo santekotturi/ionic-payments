@@ -1,4 +1,16 @@
 page-tutorial {
+
+  .section {
+    width: 100%;
+    padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .section.odd {
+    background-color: #e2e2e2
+  }
+
   .toolbar-background {
     background: transparent;
     border-color: transparent;
