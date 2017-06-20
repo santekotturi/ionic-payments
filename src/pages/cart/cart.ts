@@ -58,7 +58,7 @@ export class CartPage {
     this.cart.getCartItems()
       .then((items: any[]) => {
         this.items = items
-        if(this.items && this.items.length > 0) {
+        if (this.items && this.items.length > 0) {
           this.hasItems = true;
         }
         this.calculateTotals()
@@ -87,9 +87,6 @@ export class CartPage {
         cvc: this.card.cvc
       })
         .then(token => {
-          this.loading.dismiss()
-          this.emptyCart()
-          console.log(token)
           this.user.checkout(token, this.total * 100)
             .then((res) => {
               this._orderComplete()
