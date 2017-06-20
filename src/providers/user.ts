@@ -85,7 +85,6 @@ export class User {
           let headers = new Headers();
           headers.append('Content-Type', 'application/json');
           headers.append('X-Access-Token', token);
-          console.log('Header token set -> ', headers.get('X-Access-Token'))
           let seq = this.api.get('user/test', null, new RequestOptions({ headers: headers }))
             .map(res => res.json())
             .subscribe(res => {
@@ -99,8 +98,28 @@ export class User {
           resolve(seq);
         })
     })
+  }
 
-
+  checkout(stripeToken: string, amount: number) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('token')
+        .then((token) => {
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('X-Access-Token', token);
+          this.api.post('user/checkout', { stripeToken, amount }, new RequestOptions({ headers: headers }))
+            .map(res => res.json())
+            .subscribe(res => {
+              if (res.status == 'success') {
+                console.log('Success with token -> ', res)
+                resolve(res)
+              }
+            }, err => {
+              reject(err)
+              console.error('ERROR', err);
+            });
+        })
+    })
   }
 
   /**

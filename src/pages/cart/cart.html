@@ -12,22 +12,61 @@
 
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-avatar item-start>
-        <img src="assets/img/product-placeholder.png" />
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <ion-note item-end>Quantity: {{item.qty}}</ion-note>
-    </ion-item>
-  </ion-list>
 
-  <div padding>
-    Subtotal: {{subtotal}}<br><br> ------------------------------
-    <br> Total: {{total}} <br><br>
+<div *ngIf="!hasItems" padding text-center style="margin-top: 30vh">
+  <h2> Your cart is empty </h2>
+  <button style="margin-top: 20px" ion-button color="primary" block (click)="close()"> Go Shopping </button>
+</div>
 
-    <button ion-button color="primary" block (click)="checkout()"> Checkout with Stripe </button>
-    <button ion-button color="danger" block clear (click)="emptyCart()"> Empty Cart </button>
+  <div *ngIf="hasItems">
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-avatar item-start>
+          <img src="assets/img/product-placeholder.png" />
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <ion-note item-end>Quantity: {{item.qty}}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input [(ngModel)]="card.name" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Credit Card</ion-label>
+        <ion-input [(ngModel)]="card.number" name="card-number" type="text" size="20" data-stripe="number"></ion-input>
+        <ion-icon name="card" item-end></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Expiry Month</ion-label>
+        <ion-input [(ngModel)]="card.expMonth" name="expiry-month" type="number" size="2" data-stripe="exp_month"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Expiry Year</ion-label>
+        <ion-input [(ngModel)]="card.expYear" name="expiry-year" type="number" size="2" data-stripe="exp_year"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>CVC</ion-label>
+        <ion-input [(ngModel)]="card.cvc" name="cvc" type="text" size="4" data-stripe="cvc"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      Subtotal: {{subtotal}}<br><br> ------------------------------
+      <br> Total: {{total}} <br><br>
+      <button ion-button color="primary" block (click)="checkout()"> Checkout with Stripe </button>
+      <button ion-button color="danger" block clear (click)="emptyCart()"> Empty Cart </button>
+    </div>
   </div>
+
+
 
 </ion-content>

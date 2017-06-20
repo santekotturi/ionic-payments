@@ -7,7 +7,8 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://localhost:3000';
+  url: string = 'http://127.0.0.1:3000';
+  // url: string = 'http://10.0.2.2:3000';      // use this for android emulator
 
   constructor(public http: Http) {
   }
