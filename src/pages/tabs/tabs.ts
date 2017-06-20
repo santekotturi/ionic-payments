@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Tab1Root, Tab3Root } from '../pages';
@@ -11,6 +11,7 @@ import { Tab1Root, Tab3Root } from '../pages';
 export class TabsPage {
   tab1Root: any = Tab1Root;
   tab3Root: any = Tab3Root;
+  tabsPlacement : string = 'bottom';
 
   tab1Title = " ";
   tab2Title = " ";
@@ -18,6 +19,7 @@ export class TabsPage {
 
   constructor(
     public navCtrl: NavController,
+    public platform : Platform,
     public translateService: TranslateService) {
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE'])
       .subscribe(values => {
@@ -25,5 +27,9 @@ export class TabsPage {
         this.tab2Title = values['TAB2_TITLE'];
         this.tab3Title = values['TAB3_TITLE'];
       });
+
+      if(!platform.is('ios')) {
+        this.tabsPlacement = 'top'
+      }
   }
 }
