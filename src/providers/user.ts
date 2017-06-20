@@ -140,4 +140,16 @@ export class User {
     this.storage.set('token', this._user.token);
     this._token = this._user.token;
   }
+
+  getUser() {
+    return new Promise((resolve, reject) => {
+      if(this._user) {
+        resolve(this._user)
+      } else {
+        this.storage.get('user')
+        .then((user) => resolve(user))
+      }
+    })
+    
+  }
 }

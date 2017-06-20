@@ -8,39 +8,55 @@
 
 <ion-content>
 
-  <!--<form [formGroup]="form" *ngIf="settingsReady">
-    <ion-list *ngIf="page == 'main'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION1' | translate }}</ion-label>
-        <ion-toggle formControlName="option1"></ion-toggle>
-      </ion-item>
+<ion-list>
+    <ion-list-header>
+      <ion-icon name="cog"
+                item-left></ion-icon>
+      General
+    </ion-list-header>
 
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION2' | translate }}</ion-label>
-        <ion-input formControlName="option2"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label stacked>First Name</ion-label>
+      <ion-input [value]="_user.firstname"
+                 type="text"></ion-input>
+    </ion-item>
+        <ion-item>
+      <ion-label stacked>Last Name</ion-label>
+      <ion-input [value]="_user.lastname"
+                 type="text"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
-        <ion-select formControlName="option3">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input [value]="_user.email"
+                 type="text"></ion-input>
+    </ion-item>
 
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
-    </ion-list>
 
-    <ion-list *ngIf="page == 'profile'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
-        <ion-input formControlName="option4"></ion-input>
-      </ion-item>
-    </ion-list>
-  </form>-->
+    <!-- hacked divider -->
+    <ion-item no-lines></ion-item>
+
+    <ion-list-header>
+      <ion-icon name="paper-plane"
+                item-left></ion-icon>
+      Orders
+    </ion-list-header>
+    <ion-item>
+      340201382
+      <ion-note item-right>
+        Status: Processing
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        09289323
+      </ion-label>
+      <ion-note item-right>
+        Status: Shipped
+      </ion-note>
+    </ion-item>
+</ion-list>
+
 
      <div padding>
         <button (click)="logout()" ion-button color="dark" block>Log out</button>

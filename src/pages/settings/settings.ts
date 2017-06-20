@@ -32,11 +32,11 @@ export class SettingsPage {
     pageTitleKey: 'SETTINGS_PAGE_PROFILE'
   };
 
-  page: string = 'main';
-  pageTitleKey: string = 'SETTINGS_TITLE';
-  pageTitle: string;
+  page: string = 'main'
+  pageTitleKey: string = 'SETTINGS_TITLE'
+  pageTitle: string
+  _user = {}
 
-  subSettings: any = SettingsPage;
 
   constructor(
     public navCtrl: NavController,
@@ -46,58 +46,13 @@ export class SettingsPage {
     public translate: TranslateService,
     public user: User,
     public events: Events) {
+    user.getUser()
+      .then(user => this._user = user)
+
   }
 
-  _buildForm() {
-    let group: any = {
-      option1: [this.options.option1],
-      option2: [this.options.option2],
-      option3: [this.options.option3]
-    };
+  ngOnInit() {
 
-    switch (this.page) {
-      case 'main':
-        break;
-      case 'profile':
-        group = {
-          option4: [this.options.option4]
-        };
-        break;
-    }
-    this.form = this.formBuilder.group(group);
-
-    // Watch the form for changes, and
-    this.form.valueChanges.subscribe((v) => {
-      this.settings.merge(this.form.value);
-    });
-  }
-
-  ionViewDidLoad() {
-    // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
-  }
-
-  ionViewWillEnter() {
-    // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
-
-    this.page = this.navParams.get('page') || this.page;
-    this.pageTitleKey = this.navParams.get('pageTitleKey') || this.pageTitleKey;
-
-    this.translate.get(this.pageTitleKey).subscribe((res) => {
-      this.pageTitle = res;
-    })
-
-    this.settings.load().then(() => {
-      this.settingsReady = true;
-      this.options = this.settings.allSettings;
-
-      this._buildForm();
-    });
-  }
-
-  ngOnChanges() {
-    console.log('Ng All Changes');
   }
 
   logout() {
